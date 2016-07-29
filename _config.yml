@@ -1,11 +1,11 @@
-title: John Smith
+title: Anton Ustinov
 description: My Personal Blog
-author: John Smith
+author: Anton Ustinov
 logo: https://osvaldshpengler.github.io/static/img/avatar.png
 github: https://github.com/osvaldshpengler
-about: Freelance developer
-disqus_shortname: aboutashu
-google_analytics: UA-72862926-1
+about: Backend developer at FORUMHOUSE
+disqus_shortname: osvaldshpengler
+google_analytics:
 urls:
     - text: Home
       url: /
@@ -14,30 +14,19 @@ urls:
     - text: About
       url: /about/
       icon: fa-comments
-    - text: Projects
-      url: /projects/
-      icon: fa-desktop
     - text: Resume
       url: '#'
       icon: fa-graduation-cap
     - text: Github
       url: https://github.com/osvaldshpengler
       icon: fa-github
-    - text: XML Feed
-      url: /feed.xml
-      icon: fa-feed
-      target: _blank
 
 social:
     - icon: fa-facebook
       link: '#'
-    - icon: fa-skype
-      link: '#'
     - icon: fa-twitter
       link: '#'
     - icon: fa-linkedin
-      link: '#'
-    - icon: fa-stack-exchange
       link: '#'
 
 share:
@@ -53,7 +42,7 @@ enableTags: true
 tagarray: []
 
 url: "https://osvaldshpengler.github.io/"
-baseurl: "/hcz-jekyll-blog"
+baseurl: "/"
 paginate: 20
 per_page: 20
 paginate_path: "/page:num/"
