@@ -27,7 +27,7 @@ urls:
       url: /feed.xml
       icon: fa-feed
       target: _blank
-      
+
 social:
     - icon: fa-facebook
       link: '#'
@@ -43,6 +43,10 @@ social:
 share:
   twitter_username: \#
   fb_appid: 000000000000
+
+sass:
+  sass_dir: _sass
+  style: compressed
 
 
 enableTags: true
