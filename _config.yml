@@ -7,27 +7,36 @@ about: Backend developer at FORUMHOUSE
 disqus_shortname: osvaldshpengler
 google_analytics:
 urls:
-    - text: Home
+    - text: Главная
       url: /
       icon: fa-home
       layout: post
-    - text: About
+    - text: Веб разработка
+      url: /web
+      icon: fa-code
+      layout: post
+    - text: Python
+      url: /python
+      icon: fa-server
+      layout: post
+    - text: ML & Data Science
+      url: /ml
+      icon: fa-line-chart
+      layout: post
+    - text: Обо мне
       url: /about/
       icon: fa-comments
-    - text: Resume
-      url: '#'
-      icon: fa-graduation-cap
     - text: Github
       url: https://github.com/osvaldshpengler
       icon: fa-github
 
 social:
     - icon: fa-facebook
-      link: '#'
+      link: 'https://www.facebook.com/ustinov.ant'
     - icon: fa-twitter
-      link: '#'
+      link: 'https://twitter.com/UstinovAnt'
     - icon: fa-linkedin
-      link: '#'
+      link: 'https://www.linkedin.com/in/ustinovanton'
 
 share:
   twitter_username: \#
@@ -41,7 +50,7 @@ sass:
 enableTags: true
 tagarray: []
 
-url: "https://osvaldshpengler.github.io/"
+url: "https://osvaldshpengler.github.io"
 baseurl: ""
 paginate: 20
 per_page: 20
