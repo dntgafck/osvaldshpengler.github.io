@@ -11,7 +11,7 @@ urls:
       url: /
       icon: fa-home
       layout: post
-    - text: Веб разработка
+    - text: Web
       url: /web
       icon: fa-code
       layout: post
@@ -19,7 +19,7 @@ urls:
       url: /python
       icon: fa-server
       layout: post
-    - text: ML & Data Science
+    - text: Data Science
       url: /ml
       icon: fa-line-chart
       layout: post
