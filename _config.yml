@@ -1,61 +1,25 @@
-title: Anton Ustinov
-description: My Personal Blog
-author: Anton Ustinov
-logo: https://osvaldshpengler.github.io/static/img/avatar.png
-github: https://github.com/osvaldshpengler
-about: Backend developer at FORUMHOUSE
-disqus_shortname: osvaldshpengler
-google_analytics:
-urls:
-    - text: Главная
-      url: /
-      icon: fa-home
-      layout: post
-    - text: Web
-      url: /web
-      icon: fa-code
-      layout: post
-    - text: Python
-      url: /python
-      icon: fa-server
-      layout: post
-    - text: Data Science
-      url: /ml
-      icon: fa-line-chart
-      layout: post
-    - text: Обо мне
-      url: /about/
-      icon: fa-comments
-    - text: Github
-      url: https://github.com/osvaldshpengler
-      icon: fa-github
+# Site settings
+title: Clean Blog
+header-img: img/home-bg.jpg
+email: your-email@yourdomain.com
+copyright_name: Your/Project/Corporate Name
+description: "Write your site description here. It will be used as your sites meta description as well!"
+baseurl: "/startbootstrap-clean-blog-jekyll"
+url: "http://yourdomain.com"
+twitter_username: SBootstrap
+github_username:  davidtmiller
+facebook_username:  IronSummitMedia
+email_username:  your-email@yourdomain.com
 
-social:
-    - icon: fa-facebook
-      link: 'https://www.facebook.com/ustinov.ant'
-    - icon: fa-twitter
-      link: 'https://twitter.com/UstinovAnt'
-    - icon: fa-linkedin
-      link: 'https://www.linkedin.com/in/ustinovanton'
+# Google Analytics
+# To enable google analytics, uncomment below line with a valid Google Tracking ID
+# google_tracking_id:
 
-share:
-  twitter_username: \#
-  fb_appid: 000000000000
-
-sass:
-  sass_dir: _sass
-  style: compressed
-
-
-enableTags: true
-tagarray: []
-
-url: "https://osvaldshpengler.github.io"
-baseurl: ""
-paginate: 20
-per_page: 20
-paginate_path: "/page:num/"
+# Build settings
 markdown: kramdown
-gems:
-  - jekyll-paginate
-  - jekyll-gist
+highlighter: rouge
+permalink: pretty
+paginate: 5
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
+
+gems: [jekyll-paginate, jekyll-feed]
