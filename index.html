@@ -12,6 +12,7 @@
       body {
         margin: 0px;
         padding: 0px;
+        background-color: #000;
       }
 
       .colorp {
@@ -21,12 +22,7 @@
     </style>
   </head>
   <body>
-    <canvas id="myCanvas" width="250" height="250" style="display: block; margin: 30px auto"></canvas>
-    <h1 id="freq" style="text-align: center">1</h1>
-    <div style="text-align: center">
-        <p class="colorp">Цвет #1: <input id='colorpicker1'/></p>
-        <!-- <p class="colorp">Цвет #2: <input id='colorpicker2'/></p> -->
-    </div>
+    <canvas id="myCanvas" width="100" height="100" style="display: block; margin: 30px auto"></canvas>
     <script>
       window.requestAnimFrame = (function(callback) {
         return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
@@ -34,83 +30,57 @@
           window.setTimeout(callback, 1000 / 60);
         };
       })();
-
-      var color1 = "#00933B";
-      var color2 = "#F90101";
-
-      $("#colorpicker1").spectrum({
-            color: color1,
-            change: function(color) {
-                color1 = color.toHexString(); // #ff0000
-            }
-        });
-      // $("#colorpicker2").spectrum({
-      //       color: color2,
-      //       change: function(color) {
-      //           color2 = color.toHexString(); // #ff0000
-      //       }
-      //   });
-
-
-
-      function drawRectangle(myRectangle, context) {
-        var color = kek % 2 == 0 ? color1 : color1;
-        kek++;
-        context.beginPath();
-        context.rect(myRectangle.x, myRectangle.y, myRectangle.width, myRectangle.height);
-        context.fillStyle = color;
-        context.fill();
-        context.lineWidth = myRectangle.borderWidth;
-        context.stroke();
-      }
-
-      var kek = 0;
-      var freq = 1;
-
-      function animate(myRectangle, canvas, context, startTime) {
-
-        // clear
-        context.clearRect(0, 0, canvas.width, canvas.height);
-
-        drawRectangle(myRectangle, context);
-
-        // request new frame
-        requestAnimFrame(function() {
-            setTimeout(function(){
-                animate(myRectangle, canvas, context, startTime);
-            }, 1000/freq);
-        });
-      }
       var canvas = document.getElementById('myCanvas');
       var context = canvas.getContext('2d');
 
-      var myRectangle = {
-        x: 0,
-        y: 0,
-        width: 250,
-        height: 250
-      };
+      var fps = 60;
+      var now;
+      var then = Date.now();
+      var interval = 1000/fps;
+      var delta;
+        
+      function draw() {           
+        requestAnimationFrame(draw);
 
-      drawRectangle(myRectangle, context);
+        var interval = 1000/fps;
+         
+        now = Date.now();
+        delta = now - then;
+         
+        if (delta >= interval) {
+            then = now - (delta % interval);
+             
+            var color = kek % 2 == 0 ? white : black;
+            kek++;
+            context.beginPath();
+            context.arc(10, 10, 5, 0, 2 * Math.PI, false);
+            context.fillStyle = color;
+            context.fill();
+            context.lineWidth = 1;
+            context.strokeStyle = black;
+            context.stroke();
+        }
+      }
+       
+      draw();
 
-      // wait one second before starting animation
-      setTimeout(function() {
-        var startTime = (new Date()).getTime();
-        animate(myRectangle, canvas, context, startTime);
-      }, 1000);
+      var white = "#ffffff";
+      var black = "#000000";
+
+      var kek = 0;
+
 
     document.onkeydown =  function (e){
         var charCode = (typeof e.which == "number") ? e.which : e.keyCode;
         switch (charCode) {
             case 38:
-                freq++;
+                fps++;
                 break;
             case 40:
-                if (freq > 1) freq--;
+                if (fps > 1) fps--;
                 break;
         }
-        var fr = document.getElementById('freq');
-        fr.innerHTML = freq;
+        console.log(fps);
     };
     
 
