@@ -25,7 +25,7 @@
     <h1 id="freq" style="text-align: center">1</h1>
     <div style="text-align: center">
         <p class="colorp">Цвет #1: <input id='colorpicker1'/></p>
-        <p class="colorp">Цвет #2: <input id='colorpicker2'/></p>
+        <!-- <p class="colorp">Цвет #2: <input id='colorpicker2'/></p> -->
     </div>
     <script>
       window.requestAnimFrame = (function(callback) {
@@ -44,17 +44,17 @@
                 color1 = color.toHexString(); // #ff0000
             }
         });
-      $("#colorpicker2").spectrum({
-            color: color2,
-            change: function(color) {
-                color2 = color.toHexString(); // #ff0000
-            }
-        });
+      // $("#colorpicker2").spectrum({
+      //       color: color2,
+      //       change: function(color) {
+      //           color2 = color.toHexString(); // #ff0000
+      //       }
+      //   });
 
 
 
       function drawRectangle(myRectangle, context) {
-        var color = kek % 2 == 0 ? color1 : color2;
+        var color = kek % 2 == 0 ? color1 : color1;
         kek++;
         context.beginPath();
         context.rect(myRectangle.x, myRectangle.y, myRectangle.width, myRectangle.height);
