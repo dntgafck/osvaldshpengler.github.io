@@ -1,36 +1,119 @@
----
-layout: page
-description: "Блог о веб технологиях и машинном обучении"
----
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <script
+      src="https://code.jquery.com/jquery-1.12.4.min.js"
+      integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css">
 
-{% for post in paginator.posts %}
-<div class="post-preview">
-    <a href="{{ post.url | prepend: site.baseurl }}">
-        <h2 class="post-title">            {{ post.title }}
-        </h2>
-        {% if post.subtitle %}
-        <h3 class="post-subtitle">
-            {{ post.subtitle }}
-        </h3>
-        {% endif %}
-    </a>
-    <p class="post-meta">{{ post.date | date: "%B %-d, %Y" }}</p>
-</div>
-<hr>
-{% endfor %}
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
 
-<!-- Pager -->
-{% if paginator.total_pages > 1 %}
-<ul class="pager">
-    {% if paginator.previous_page %}
-    <li class="previous">
-        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; обратно</a>
-    </li>
-    {% endif %}
-    {% if paginator.next_page %}
-    <li class="next">
-        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">туда &rarr;</a>
-    </li>
-    {% endif %}
-</ul>
-{% endif %}
+      .colorp {
+        display: inline-block;
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="250" height="250" style="display: block; margin: 30px auto"></canvas>
+    <h1 id="freq" style="text-align: center">1</h1>
+    <div style="text-align: center">
+        <p class="colorp">Цвет #1: <input id='colorpicker1'/></p>
+        <p class="colorp">Цвет #2: <input id='colorpicker2'/></p>
+    </div>
+    <script>
+      window.requestAnimFrame = (function(callback) {
+        return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+        function(callback) {
+          window.setTimeout(callback, 1000 / 60);
+        };
+      })();
+
+      var color1 = "#00933B";
+      var color2 = "#F90101";
+
+      $("#colorpicker1").spectrum({
+            color: color1,
+            change: function(color) {
+                color1 = color.toHexString(); // #ff0000
+            }
+        });
+      $("#colorpicker2").spectrum({
+            color: color2,
+            change: function(color) {
+                color2 = color.toHexString(); // #ff0000
+            }
+        });
+
+
+
+      function drawRectangle(myRectangle, context) {
+        var color = kek % 2 == 0 ? color1 : color2;
+        kek++;
+        context.beginPath();
+        context.rect(myRectangle.x, myRectangle.y, myRectangle.width, myRectangle.height);
+        context.fillStyle = color;
+        context.fill();
+        context.lineWidth = myRectangle.borderWidth;
+        context.stroke();
+      }
+
+      var kek = 0;
+      var freq = 1;
+
+      function animate(myRectangle, canvas, context, startTime) {
+
+        // clear
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        drawRectangle(myRectangle, context);
+
+        // request new frame
+        requestAnimFrame(function() {
+            setTimeout(function(){
+                animate(myRectangle, canvas, context, startTime);
+            }, 1000/freq);
+        });
+      }
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+
+      var myRectangle = {
+        x: 0,
+        y: 0,
+        width: 250,
+        height: 250
+      };
+
+      drawRectangle(myRectangle, context);
+
+      // wait one second before starting animation
+      setTimeout(function() {
+        var startTime = (new Date()).getTime();
+        animate(myRectangle, canvas, context, startTime);
+      }, 1000);
+
+    document.onkeydown =  function (e){
+        var charCode = (typeof e.which == "number") ? e.which : e.keyCode;
+        switch (charCode) {
+            case 38:
+                freq++;
+                break;
+            case 40:
+                if (freq > 1) freq--;
+                break;
+        }
+        var fr = document.getElementById('freq');
+        fr.innerHTML = freq;
+    };
+    
+
+    </script>
+  </body>
+</html>      
